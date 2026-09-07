@@ -1,0 +1,36 @@
+#!/bin/bash
+
+CONN_STRING="jdbc:mysql://localhost:3306/customer_churn?useUnicode=true&characterEncoding=utf8&useSSL=false"
+USER="student"
+PASS="student"
+BASE_HDFS="/user/student/Capstone_Project"
+
+sqoop import \
+  --connect "$CONN_STRING" \
+  --username "$USER" \
+  --password "$PASS" \
+  --table customer \
+  --target-dir "$BASE_HDFS/customer" \
+  --num-mappers 1 \
+  --delete-target-dir \
+  --as-parquetfile
+
+sqoop import \
+  --connect "$CONN_STRING" \
+  --username "$USER" \
+  --password "$PASS" \
+  --table customer_usage \
+  --target-dir "$BASE_HDFS/customer_usage" \
+  --num-mappers 1 \
+  --delete-target-dir \
+  --as-parquetfile
+
+sqoop import \
+  --connect "$CONN_STRING" \
+  --username "$USER" \
+  --password "$PASS" \
+  --table offers \
+  --target-dir "$BASE_HDFS/offers" \
+  --num-mappers 1 \
+  --delete-target-dir \
+  --as-parquetfile

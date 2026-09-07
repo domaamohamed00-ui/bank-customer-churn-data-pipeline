@@ -1,0 +1,33 @@
+{
+  "type": "record",
+  "name": "customer_support_tickets",
+  "fields": [
+    {
+      "name": "ticket_id",
+      "type": "int"
+    },
+    {
+      "name": "customer_id",
+      "type": "int"
+    },
+    {
+      "name": "issue_type",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "severity",
+      "type": "string"
+    },
+    {
+      "name": "resolution_time_hrs",
+      "type": ["null", "double"],
+      "default": null
+    },
+    {
+      "name": "date",
+      "type": ["null", "string"],
+      "default": null
+    }
+  ]
+}
